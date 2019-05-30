@@ -1,0 +1,29 @@
+@import "reset.scss";
+
+@function between($from, $to, $fromWidth, $toWidth) {
+  $slope: ($to - $from) / ($toWidth - $fromWidth);
+  $base: $from - $slope * $fromWidth;
+
+  @return calc(#{$base} + #{100vw * $slope});
+}
+
+$mobileMin: 600px;
+$tabletMin: 900px;
+$tabletMax: 1200px;
+$screenMax: 1800px;
+
+body {
+  font-family: "Catamaran", sans-serif;
+}
+
+h1 {
+  font-size: between(16px, 35px, 0px, 600px);
+
+  @media (min-width: $mobileMin) {
+    font-size: between(35px, 40px, 600px, 900px);
+  }
+
+  @media (min-width: $tabletMin) {
+    font-size: between(40px, 50px, 600px, 900px);
+  }
+}
