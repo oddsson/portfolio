@@ -3,26 +3,13 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import styled from "styled-components"
 import HeroSection from "../components/sections/HeroSection"
-
-const d = new Date()
-const currentYear = d.getFullYear()
-const myAge = currentYear - 1990
+import AboutSection from "../components/sections/AboutSection"
 
 const IndexPage = () => (
   <Layout>
     <HeroSection />
-    <section className="about-section">
-      <p>
-        I am a {myAge} years old programmer who is currently focusing on web
-        development. I build user friendly and accessible websites where the
-        user always comes first.
-      </p>
-      <p>
-        I currently live in Reykjavík, Iceland with my wife and newly born son.
-        In my spare time I like to run and I'm currently training for an Iron
-        Man in 2021.
-      </p>
-    </section>
+    <Image />
+    <AboutSection />
     <section className="work-section">
       <h2>
         Projects I've helped creating.

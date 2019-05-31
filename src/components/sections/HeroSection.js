@@ -1,11 +1,29 @@
 import React from "react"
 import styled from "styled-components"
+import * as variables from "../../styles/variables"
 
 const Section = styled.section`
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   background-color: #f2f1ef;
+  padding: 0 16px;
+
+  /* 
+  Might be too out there. Ask Orri
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0),
+    #f47983 162%
+  ); */
+
+  @media (min-width: ${variables.mobileMin}) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: ${variables.tabletMin}) {
+    padding: 0 64px;
+  }
 `
 
 const ColorSpan = styled.span`
@@ -19,6 +37,7 @@ const Emoji = styled.span`
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
+  margin-bottom: 16px;
 
   @keyframes wave {
     0% {
@@ -45,6 +64,20 @@ const Emoji = styled.span`
   }
 `
 
+export const ColorPeriod = styled.span`
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-left: 2px;
+  border-radius: 50%;
+  background-color: #d63031;
+
+  @media (min-width: ${variables.tabletMin}) {
+    width: 6px;
+    height: 6px;
+  }
+`
+
 const HeroSection = () => {
   return (
     <Section>
@@ -55,8 +88,9 @@ const HeroSection = () => {
             👋
           </Emoji>
           <br />
-          My name is <ColorSpan>Ívar Oddsson</ColorSpan> and <br /> I create
-          pretty things on the web.
+          My name is <ColorSpan>Ívar Oddsson</ColorSpan> and I create pretty
+          things on the web
+          <ColorPeriod />
         </h1>
       </div>
     </Section>
