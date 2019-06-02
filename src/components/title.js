@@ -9,7 +9,7 @@ const STitle = styled.h2`
   color: #d63031;
 `
 
-const Title = ({ children }) => <STitle>{children}</STitle>
+const Title = ({ children }) => <STitle className="title">{children}</STitle>
 
 Title.propTypes = { children: PropTypes.any }
 
