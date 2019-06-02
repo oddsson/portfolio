@@ -2,12 +2,16 @@ import React from "react"
 import styled from "styled-components"
 import * as variables from "../../styles/variables"
 
-const Section = styled.section`
+export const Section = styled.section`
   display: flex;
   align-items: center;
   height: 90vh;
   background-color: #f2f1ef;
   padding: 0 16px;
+
+  h1 {
+    max-width: 1000px;
+  }
 
   /* 
   Might be too out there. Ask Orri
@@ -71,11 +75,6 @@ export const ColorPeriod = styled.span`
   margin-left: 2px;
   border-radius: 50%;
   background-color: #d63031;
-
-  @media (min-width: ${variables.tabletMin}) {
-    width: 6px;
-    height: 6px;
-  }
 `
 
 const HeroSection = () => {
@@ -84,8 +83,10 @@ const HeroSection = () => {
       <div>
         <h1>
           Hi there{" "}
-          <Emoji role="img" aria-label="Wave emoji">
-            👋
+          <Emoji>
+            <span role="img" aria-label="Waving hand emoji">
+              👋
+            </span>
           </Emoji>
           <br />
           My name is <ColorSpan>Ívar Oddsson</ColorSpan> and I create pretty
