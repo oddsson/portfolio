@@ -7,7 +7,6 @@ export const Section = styled.section`
   align-items: center;
   height: 90vh;
   background-color: #f2f1ef;
-  padding: 0 16px;
 
   h1 {
     max-width: 1000px;
