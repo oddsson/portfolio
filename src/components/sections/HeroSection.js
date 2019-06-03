@@ -14,12 +14,12 @@ export const Section = styled.section`
 
   /* 
   Might be too out there. Ask Orri
+
   background-image: linear-gradient(
     to top,
     rgba(255, 255, 255, 0),
     #f47983 162%
   ); */
-
   @media (min-width: ${variables.mobileMin}) {
     padding: 0 32px;
   }
@@ -68,12 +68,7 @@ const Emoji = styled.span`
 `
 
 export const ColorPeriod = styled.span`
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  margin-left: 2px;
-  border-radius: 50%;
-  background-color: #d63031;
+  color: #d63031;
 `
 
 const HeroSection = () => {
@@ -90,7 +85,7 @@ const HeroSection = () => {
           <br />
           My name is <ColorSpan>Ívar Oddsson</ColorSpan> and I create pretty
           things on the web
-          <ColorPeriod />
+          <ColorPeriod>.</ColorPeriod>
         </h1>
       </div>
     </Section>
