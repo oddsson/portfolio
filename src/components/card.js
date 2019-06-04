@@ -15,7 +15,7 @@ const SCard = styled.a`
 
   :hover {
     transform: translate(-4px, -4px);
-    box-shadow: 16px 8px 16px 0px rgba(0, 0, 0, 0.37);
+    box-shadow: 16px 16px 16px 0px rgba(0, 0, 0, 0.2);
   }
 `
 
