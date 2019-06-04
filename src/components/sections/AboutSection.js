@@ -14,7 +14,7 @@ const Section = styled.section`
   align-items: center;
   flex-direction: column;
   height: 66vh;
-  padding: 0 16px;
+  padding: 0 64px;
 
   h2 {
     margin-bottom: 32px;
@@ -25,7 +25,7 @@ const Section = styled.section`
   }
 
   @media (min-width: ${variables.tabletMin}) {
-    padding: 0 280px;
+    padding: 0 64px;
   }
 `
 

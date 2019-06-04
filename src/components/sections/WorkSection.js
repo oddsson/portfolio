@@ -6,7 +6,15 @@ import * as variables from "../../styles/variables"
 
 const WSection = styled.section`
   background-color: #f2f1ef;
-  padding: 136px 32px;
+  padding: 136px 64px;
+
+  @media (min-width: ${variables.mobileMin}) {
+    padding: 136px 32px;
+  }
+
+  @media (min-width: ${variables.tabletMin}) {
+    padding: 136px 64px;
+  }
 
   .title {
     margin-bottom: 32px;
@@ -15,9 +23,9 @@ const WSection = styled.section`
 
 const SectionLi = styled.li`
   display: grid;
-  align-items: center;
   justify-items: center;
   grid-row-gap: 32px;
+  grid-column-gap: 32px;
 
   @media (min-width: ${variables.tabletMin}) {
     grid-template-columns: 1fr 1fr;
