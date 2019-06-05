@@ -9,7 +9,7 @@ const ictImg = () => {
         query {
           placeholderImage: file(relativePath: { eq: "ict.png" }) {
             childImageSharp {
-              fluid(maxWidth: 620) {
+              fluid(maxWidth: 1024) {
                 ...GatsbyImageSharpFluid
               }
             }

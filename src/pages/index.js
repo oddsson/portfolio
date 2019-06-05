@@ -9,7 +9,7 @@ import FooterSection from "../components/sections/FooterSection"
 const IndexPage = () => (
   <Layout>
     <HeroSection />
-    <Image />
+    {/* <Image /> */}
     <AboutSection />
     <WorkSection />
     <FooterSection />

@@ -29,19 +29,20 @@ body {
 
 h1 {
   font-size: between(35px, 48px, 0px, 600px);
-  line-height: 50px;
+  line-height: 4rem;
 
   @media (min-width: $mobileMin) {
     font-size: between(35px, 40px, 600px, 900px);
   }
 
   @media (min-width: $tabletMin) {
-    font-size: between(30px, 38px, 600px, 900px);
+    font-size: between(30px, 34px, 600px, 900px);
   }
 }
 
 h2 {
   font-size: between(16px, 28px, 0px, 600px);
+  line-height: 4rem;
 
   @media (min-width: $mobileMin) {
     font-size: between(35px, 40px, 600px, 900px);
