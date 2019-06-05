@@ -6,13 +6,9 @@ import * as variables from "../../styles/variables"
 
 const WSection = styled.section`
   background-color: #f2f1ef;
-  padding: 136px 64px;
+  padding: 136px 32px;
 
   @media (min-width: ${variables.mobileMin}) {
-    padding: 136px 32px;
-  }
-
-  @media (min-width: ${variables.tabletMin}) {
     padding: 136px 64px;
   }
 

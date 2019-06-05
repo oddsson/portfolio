@@ -1,10 +1,16 @@
 import React from "react"
 import styled from "styled-components"
+import * as variables from "../../styles/variables"
 
 const SFooter = styled.footer`
   background-color: #353b48;
-  padding: 132px 64px;
+  padding: 132px 32px;
   color: white;
+
+
+  @media (min-width: ${variables.mobileMin}) {
+    padding: 132px 64px;
+  }
 `
 
 const FooterLink = styled.a`
