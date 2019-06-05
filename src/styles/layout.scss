@@ -10,21 +10,20 @@
 $mobileMin: 600px;
 $tabletMin: 900px;
 $tabletMax: 1200px;
-$screenMax: 1800px;
+$screenMax: 1600px;
+$desktopHuge: 3840px;
 
 body {
   font-family: "Catamaran", sans-serif;
-  font-size: between(16px, 20px, 0px, 600px);
-  line-height: 22px;
+  font-size: between(16px, 17px, 0px, 600px);
+  line-height: 1.625rem;
 
-  @media (min-width: $mobileMin) {
-    font-size: between(20px, 24px, 600px, 900px);
-    line-height: 30px;
+  @media (min-width: $screenMax) {
+    font-size: between(17px, 24px, $screenMax, $desktopHuge);
   }
 
-  @media (min-width: $tabletMin) {
-    font-size: between(16px, 20px, 600px, 900px);
-    line-height: 40px;
+  @media (min-width: $desktopHuge) {
+    font-size: 24px;
   }
 }
 
@@ -51,7 +50,4 @@ h2 {
   @media (min-width: $tabletMin) {
     font-size: between(26px, 30px, 600px, 900px);
   }
-}
-
-p {
 }

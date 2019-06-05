@@ -7,24 +7,13 @@ export const Section = styled.section`
   align-items: center;
   height: 90vh;
   background-color: #f2f1ef;
+  padding: 0 32px;
 
   h1 {
     max-width: 1000px;
   }
 
-  /* 
-  Might be too out there. Ask Orri
-
-  background-image: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0),
-    #f47983 162%
-  ); */
   @media (min-width: ${variables.mobileMin}) {
-    padding: 0 32px;
-  }
-
-  @media (min-width: ${variables.tabletMin}) {
     padding: 0 64px;
   }
 `
@@ -40,7 +29,7 @@ const Emoji = styled.span`
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 
   @keyframes wave {
     0% {
