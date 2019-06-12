@@ -12,6 +12,7 @@ const SCard = styled.a`
   text-decoration: none;
   color: inherit;
   transition: all 0.3s;
+  box-shadow: 16px 16px 16px 0px rgba(0,0,0,0.1);
 
   :hover {
     transform: translate(-4px, -4px);
