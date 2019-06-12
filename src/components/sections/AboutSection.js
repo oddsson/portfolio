@@ -44,7 +44,7 @@ const AboutSectionText = styled.div`
   }
 
   @media (min-width: ${variables.tabletMin}) {
-    width: calc(50% - 64px);
+    width: calc(50% - 124px);
     padding: 0 64px;
   }
 `;
