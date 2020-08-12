@@ -7,10 +7,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color: #ff793f;
+    font-family: "Archivo", sans-serif;
+    font-size: 18px;
   }
 
   h1, h2, h3 {
-    font-family: "Archivo", sans-serif;
     margin: 0;
   }
 
@@ -29,8 +30,12 @@ const GlobalStyle = createGlobalStyle`
     font-size: 8em;
 
     @media (min-width: 1440px) {
-      font-size: 15em;
+      font-size: 12em;
     }
+  }
+
+  p {
+    line-height: 1.6em;
   }
 `
 export default function Layout({ children }) {

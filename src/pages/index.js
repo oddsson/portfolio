@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
+import { useTrackVisibility } from "react-intersection-observer-hook"
 import Layout from "../components/layout"
 import Arrow from "../components/arrow"
 import Project from "../components/project"
@@ -71,7 +72,7 @@ const TitleLine = styled.div`
     display: inline-block;
     position: absolute;
     left: 0;
-    height: 98%;
+    height: 88%;
     background-color: white;
     animation: 1s animate-text-before forwards;
     animation-delay: ${props =>
@@ -177,52 +178,137 @@ const Headshot = styled.img`
 `
 const ProjectsContainer = styled.div`
   display: grid;
-  row-gap: 2em;
   width: 90%;
   margin: 0 auto;
 
   @media (min-width: 1440px) {
+    grid-template-columns: 1fr 1fr;
     width: 70vw;
     max-width: 1500px;
   }
 `
 
+const ProjectTitleContainer = styled.div`
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+  margin-bottom: 4em;
+
+  @media (min-width: 650px) {
+    height: 150px;
+  }
+
+  @media (min-width: 1440px) {
+    height: 500px;
+  }
+`
+
 const HollowTitle = styled.h2`
+  position: absolute;
+  bottom: -100%;
+  left: 8px;
   color: #ff793f;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
     1px 1px 0 #fff;
+  animation: 665.244ms cubic-bezier(0, 0, 0.5, 0.96) 0ms 1 normal forwards
+    slide-up;
+  animation-delay: 665.244ms;
+
+  &.visible,
+  &.visible::after {
+    animation-play-state: running;
+  }
+
+  &.hidden,
+  &.hidden::after {
+    animation-play-state: paused;
+  }
+
+  ::after {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    animation: 1.4s cubic-bezier(0, 0, 0.5, 0.96) 0ms 1 normal forwards
+      deco-slide-up;
+  }
+
+  @keyframes slide-up {
+    to {
+      bottom: 0%;
+    }
+  }
+
+  @keyframes deco-slide-up {
+    0% {
+      bottom: -100%;
+      clip-path: inset(0 0 0 0);
+    }
+    50%,
+    60%,
+    70% {
+      bottom: 0;
+      clip-path: inset(0 0 0 0);
+    }
+    100% {
+      bottom: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+  }
 `
 
 export default function Home() {
+  const [ref, { isVisible }] = useTrackVisibility({ threshold: 0.7 })
+  const projectTitleRef = useRef()
+
+  useEffect(() => {
+    projectTitleRef.current.style.animationPlayState = isVisible
+      ? "running"
+      : "paused"
+  }, [isVisible])
+
   const projects = [
     {
       name: "TM",
       developedAt: "Kolibri",
       platform: "website",
       skills: ["React", "Typescript", "CSS Modules"],
+      about:
+        "Allows users to buy insurances with one of Icelands largest insurance companies online.",
       link: "https://tm.is/kaupa",
+      color: "#2C4A33",
     },
     {
       name: "TM App",
       developedAt: "Kolibri",
       platform: "website",
       skills: ["React Native", "Typescript", "Expo"],
+      about: "A mobile app for users to buy and manage their insurances.",
       link: "",
+      color: "#F2C96F",
     },
     {
       name: "Marel",
       developedAt: "Kolibri",
       platform: "website",
       skills: ["React", "Typescript", "Styled Components"],
+      about: "A marketing website for one of Iceland's largest companies.",
       awards: "",
       link: "https://marel.com",
+      color: "#003a70",
     },
     {
       name: "Discovered.is",
       developedAt: "Hobby",
       platform: "website",
       skills: ["React", "Spotify API"],
+      about:
+        "A website that lists new releases on Spotify along with their genres. A brilliant way to discover new music",
       link: "https://discovered.is",
+      color: "#1db954",
     },
   ]
   return (
@@ -239,13 +325,20 @@ export default function Home() {
         <HeadshotContainer>
           <Headshot src="/cv_img.jpg" alt="my headshot" />
           <ThatsMeContainer>
-            <HeadshotText>Thats me</HeadshotText>
+            <HeadshotText>This is me</HeadshotText>
             <Arrow />
           </ThatsMeContainer>
         </HeadshotContainer>
       </HeroContainer>
       <ProjectsContainer>
-        <HollowTitle>Pro&shy;jec&shy;ts</HollowTitle>
+        <ProjectTitleContainer ref={ref}>
+          <HollowTitle
+            ref={projectTitleRef}
+            className={isVisible ? "visible" : "hidden"}
+          >
+            Pro&shy;jec&shy;ts
+          </HollowTitle>
+        </ProjectTitleContainer>
         {projects.map((project, index) => {
           return (
             <Project
@@ -254,9 +347,11 @@ export default function Home() {
               developedAt={project.developedAt}
               platform={project.platform}
               skills={project.skills}
+              about={project.about}
               awards={project.awards}
               link={project.awards}
               projectNr={index}
+              color={project.color}
             />
           )
         })}
