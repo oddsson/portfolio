@@ -7,8 +7,7 @@ import Project from "../components/project"
 import Icon from "../assets/get_in_touch.svg"
 
 const Container = styled.section`
-  width: 90%;
-  margin: 0 auto;
+  margin: 0 16px;
 
   @media (min-width: 1440px) {
     width: 70vw;
@@ -46,7 +45,7 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   margin-top: 4em;
 
   @media (min-width: 1440px) {
@@ -174,15 +173,15 @@ const HeadshotText = styled(CaveatText)`
   margin: 10px 7px 0 0;
   color: black;
 `
-
 const Headshot = styled.img`
-  max-height: 100%;
   width: 100%;
-  max-width: 500px;
+  height: 350px;
+  object-fit: cover;
   mix-blend-mode: lighten;
 
   @media (min-width: 650px) {
     width: 500px;
+    height: auto;
   }
 `
 const ProjectsContainer = styled(Container)`
@@ -263,6 +262,7 @@ const HollowTitle = styled.h2`
     }
   }
 `
+//test
 
 const AboutContainer = styled(ProjectsContainer)`
   margin-top: 2em;
@@ -407,7 +407,7 @@ export default function Home() {
       color: "#003a70",
     },
     {
-      name: "Discovered.is",
+      name: "dis\ncovered.is",
       developedAt: "Hobby",
       platform: "website",
       skills: ["NextJS", "Spotify API"],
