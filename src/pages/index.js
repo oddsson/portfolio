@@ -46,15 +46,14 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin-top: 4em;
+  margin: 4em auto;
 
   @media (min-width: 1440px) {
     position: relative;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0;
+    margin: 20em auto;
   }
 `
 
@@ -176,7 +175,6 @@ const HeadshotText = styled(CaveatText)`
 `
 const Headshot = styled.img`
   width: 100%;
-  max-height: 570px;
   mix-blend-mode: lighten;
 
   @media (min-width: 650px) {
@@ -354,12 +352,12 @@ export default function Home() {
 
   const [ptRef, ptInView] = useInView({
     /* Optional options */
-    threshold: 0.7,
+    threshold: 1,
   })
 
   const [abRef, abInView] = useInView({
     /* Optional options */
-    threshold: 0.7,
+    threshold: 1,
   })
 
   useEffect(() => {
