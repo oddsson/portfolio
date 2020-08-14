@@ -10,6 +10,7 @@ const StyledProject = styled.div`
   color: white;
   min-height: 400px;
 
+  &:hover::after,
   &:hover::after {
     height: 100%;
   }
@@ -30,11 +31,12 @@ const StyledProject = styled.div`
 `
 
 const ProjectInfo = styled.span`
-  font-size: 16px;
+  font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1440 - 320)));
   font-weight: 500;
+  line-height: 1.2em;
   text-transform: uppercase;
   order: -1;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 `
 
 const ProjectTitle = styled.h3`

@@ -187,6 +187,7 @@ const Headshot = styled.img`
 `
 const ProjectsContainer = styled(Container)`
   display: grid;
+  grid-auto-rows: 1fr;
 
   @media (min-width: 1440px) {
     grid-template-columns: 1fr 1fr;
@@ -196,16 +197,8 @@ const ProjectsContainer = styled(Container)`
 const SectionTitleContainer = styled.div`
   overflow: hidden;
   position: relative;
-  height: 500px;
-  margin-bottom: 4em;
-
-  @media (min-width: 650px) {
-    height: 150px;
-  }
-
-  @media (min-width: 1440px) {
-    height: 500px;
-  }
+  height: 100%;
+  align-self: center;
 `
 
 const HollowTitle = styled.h2`
@@ -215,6 +208,7 @@ const HollowTitle = styled.h2`
   color: #ff793f;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
     1px 1px 0 #fff;
+  margin-bottom: 0.3em;
   animation: 665.244ms cubic-bezier(0, 0, 0.5, 0.96) 0ms 1 normal forwards
     slide-up;
   animation-delay: 665.244ms;
@@ -242,6 +236,10 @@ const HollowTitle = styled.h2`
     animation-play-state: paused;
   }
 
+  @media (min-width: 1440px) {
+    margin-bottom: 0;
+  }
+
   @keyframes slide-up {
     to {
       bottom: 0%;
@@ -267,12 +265,15 @@ const HollowTitle = styled.h2`
 `
 
 const AboutContainer = styled(ProjectsContainer)`
-  margin-top: 12em;
-  grid-auto-rows: 1fr;
+  margin-top: 2em;
+
+  @media (min-width: 1440px) {
+    margin: 12em auto;
+  }
 `
 
 const AboutMe = styled.p`
-  padding: 10% 10% 0 10%;
+  padding: 10%;
   margin: 0;
   border: 1px solid white;
 `
@@ -300,14 +301,24 @@ const ContactMeContainer = styled(Container)`
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  margin: 12em auto;
+  margin: 2em auto;
   min-height: 50vh;
+  padding: 2em 0;
+
+  @media (min-width: 1440px) {
+    padding: 0;
+    margin: 12em auto;
+  }
 `
 
 const ContactMeText = styled.p`
-  max-width: 40%;
+  max-width: 90%;
   text-align: center;
   margin-bottom: 4em;
+
+  @media (min-width: 650px) {
+    max-width: 40%;
+  }
 `
 
 const GetInTouchIconWrapper = styled.div`
@@ -315,7 +326,8 @@ const GetInTouchIconWrapper = styled.div`
   position: relative;
   transition: transform 1s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.2);
   }
 `
@@ -430,7 +442,7 @@ export default function Home() {
             ref={projectTitleRef}
             className={ptInView ? "visible" : "hidden"}
           >
-            Pro&shy;jec&shy;ts
+            Pro&shy;jects
           </HollowTitle>
         </SectionTitleContainer>
         {projects.map((project, index) => {
