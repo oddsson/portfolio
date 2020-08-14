@@ -46,7 +46,6 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  height: 100%;
   margin: 4em auto;
 
   @media (min-width: 1440px) {
@@ -175,12 +174,14 @@ const HeadshotText = styled(CaveatText)`
   color: black;
 `
 const Headshot = styled.img`
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
   mix-blend-mode: lighten;
 
   @media (min-width: 650px) {
     width: 500px;
+    height: auto;
   }
 `
 const ProjectsContainer = styled(Container)`
