@@ -46,6 +46,7 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
+  height: 100%;
   margin: 4em auto;
 
   @media (min-width: 1440px) {
