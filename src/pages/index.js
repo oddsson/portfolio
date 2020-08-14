@@ -407,7 +407,7 @@ export default function Home() {
       color: "#003a70",
     },
     {
-      name: "Discovered.is",
+      name: "dis\ncovered.is",
       developedAt: "Hobby",
       platform: "website",
       skills: ["NextJS", "Spotify API"],

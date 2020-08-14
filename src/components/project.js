@@ -42,6 +42,7 @@ const ProjectInfo = styled.span`
 const ProjectTitle = styled.h3`
   display: flex;
   margin-bottom: 1em;
+  white-space: pre;
 `
 
 const ProjectNumber = styled.span`
