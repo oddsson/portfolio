@@ -46,15 +46,14 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin-top: 4em;
+  margin: 4em auto;
 
   @media (min-width: 1440px) {
     position: relative;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0;
+    margin: 20em auto;
   }
 `
 
