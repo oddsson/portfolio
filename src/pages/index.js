@@ -46,7 +46,7 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   margin-top: 4em;
 
   @media (min-width: 1440px) {
@@ -174,10 +174,8 @@ const HeadshotText = styled(CaveatText)`
   margin: 10px 7px 0 0;
   color: black;
 `
-// test
 const Headshot = styled.img`
   width: 100%;
-  max-width: 100%;
   mix-blend-mode: lighten;
 
   @media (min-width: 650px) {
