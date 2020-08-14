@@ -8,7 +8,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color: #ff793f;
     font-family: "Archivo", sans-serif;
-    font-size: 18px;
+    font-size: 20px;
+    color: white;
   }
 
   h1, h2, h3 {
@@ -32,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: 1440px) {
       font-size: 12em;
     }
+  }
+
+  h3 {
+    font-size: calc(30px + (60 - 30) * ((100vw - 320px) / (1440 - 320)));
   }
 
   p {

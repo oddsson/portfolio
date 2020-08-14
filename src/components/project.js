@@ -30,15 +30,15 @@ const StyledProject = styled.div`
 `
 
 const ProjectInfo = styled.span`
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   order: -1;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 `
 
 const ProjectTitle = styled.h3`
   display: flex;
-  font-size: calc(30px + (60 - 30) * ((100vw - 320px) / (1440 - 320)));
   margin-bottom: 1em;
 `
 
@@ -75,7 +75,6 @@ export default function Project({
         .toString()
         .replace(",", ", ")}`}</ProjectInfo>
       <ProjectAbout>{about}</ProjectAbout>
-      <
     </StyledProject>
   )
 }

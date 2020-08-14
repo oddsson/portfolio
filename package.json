@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "gatsby": "^2.24.26",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-intersection-observer": "^8.26.2",
     "react-intersection-observer-hook": "^1.0.4",
     "styled-components": "^5.1.1",
     "typeface-archivo": "^1.1.3",

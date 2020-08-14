@@ -1,9 +1,20 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
-import { useTrackVisibility } from "react-intersection-observer-hook"
+import { useInView } from "react-intersection-observer"
 import Layout from "../components/layout"
 import Arrow from "../components/arrow"
 import Project from "../components/project"
+import Icon from "../assets/get_in_touch.svg"
+
+const Container = styled.section`
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: 1440px) {
+    width: 70vw;
+    max-width: 1500px;
+  }
+`
 
 const Curtain = styled.div`
   position: fixed;
@@ -32,20 +43,17 @@ const Curtain = styled.div`
   }
 `
 
-const HeroContainer = styled.div`
+const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 90%;
-  margin: 4em auto 0 auto;
+  margin-top: 4em;
 
   @media (min-width: 1440px) {
     position: relative;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 70vw;
-    max-width: 1500px;
     margin-top: 0;
   }
 `
@@ -164,6 +172,7 @@ const CaveatText = styled.p`
 
 const HeadshotText = styled(CaveatText)`
   margin: 10px 7px 0 0;
+  color: black;
 `
 
 const Headshot = styled.img`
@@ -176,19 +185,15 @@ const Headshot = styled.img`
     width: 500px;
   }
 `
-const ProjectsContainer = styled.div`
+const ProjectsContainer = styled(Container)`
   display: grid;
-  width: 90%;
-  margin: 0 auto;
 
   @media (min-width: 1440px) {
     grid-template-columns: 1fr 1fr;
-    width: 70vw;
-    max-width: 1500px;
   }
 `
 
-const ProjectTitleContainer = styled.div`
+const SectionTitleContainer = styled.div`
   overflow: hidden;
   position: relative;
   height: 500px;
@@ -213,16 +218,7 @@ const HollowTitle = styled.h2`
   animation: 665.244ms cubic-bezier(0, 0, 0.5, 0.96) 0ms 1 normal forwards
     slide-up;
   animation-delay: 665.244ms;
-
-  &.visible,
-  &.visible::after {
-    animation-play-state: running;
-  }
-
-  &.hidden,
-  &.hidden::after {
-    animation-play-state: paused;
-  }
+  animation-play-state: paused;
 
   ::after {
     content: "";
@@ -234,6 +230,16 @@ const HollowTitle = styled.h2`
     height: 100%;
     animation: 1.4s cubic-bezier(0, 0, 0.5, 0.96) 0ms 1 normal forwards
       deco-slide-up;
+  }
+
+  &.visible,
+  &.visible::after {
+    animation-play-state: running;
+  }
+
+  &.hidden,
+  &.hidden::after {
+    animation-play-state: paused;
   }
 
   @keyframes slide-up {
@@ -260,15 +266,103 @@ const HollowTitle = styled.h2`
   }
 `
 
+const AboutContainer = styled(ProjectsContainer)`
+  margin-top: 12em;
+  grid-auto-rows: 1fr;
+`
+
+const AboutMe = styled.p`
+  padding: 10% 10% 0 10%;
+  margin: 0;
+  border: 1px solid white;
+`
+
+const AboutSkills = styled(AboutMe)`
+  border: 1px solid white;
+`
+
+const AboutSkillsList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 2em;
+  list-style: none;
+  padding: 0;
+  margin-top: 3.5em;
+`
+
+const AboutSkillsListItem = styled.li`
+  min-height: 2.75em;
+`
+
+const ContactMeContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  margin: 12em auto;
+  min-height: 50vh;
+`
+
+const ContactMeText = styled.p`
+  max-width: 40%;
+  text-align: center;
+  margin-bottom: 4em;
+`
+
+const GetInTouchIconWrapper = styled.div`
+  display: flex;
+  position: relative;
+  transition: transform 1s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`
+
+const GetInTouchIcon = styled.a`
+  animation: 10s rotate linear infinite;
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`
+
+const GetInTouchEmoji = styled.span`
+  position: absolute;
+  top: 33%;
+  left: 36%;
+  font-size: 1.9em;
+  z-index: -1;
+`
+
 export default function Home() {
-  const [ref, { isVisible }] = useTrackVisibility({ threshold: 0.7 })
   const projectTitleRef = useRef()
+  const aboutTitleRef = useRef()
+
+  const [ptRef, ptInView] = useInView({
+    /* Optional options */
+    threshold: 0.7,
+  })
+
+  const [abRef, abInView] = useInView({
+    /* Optional options */
+    threshold: 0.7,
+  })
 
   useEffect(() => {
-    projectTitleRef.current.style.animationPlayState = isVisible
-      ? "running"
-      : "paused"
-  }, [isVisible])
+    if (ptInView) {
+      projectTitleRef.current.style.animationPlayState = "running"
+    }
+  }, [ptInView])
+
+  useEffect(() => {
+    if (abInView) {
+      aboutTitleRef.current.style.animationPlayState = "running"
+    }
+  }, [abInView])
 
   const projects = [
     {
@@ -304,9 +398,9 @@ export default function Home() {
       name: "Discovered.is",
       developedAt: "Hobby",
       platform: "website",
-      skills: ["React", "Spotify API"],
+      skills: ["NextJS", "Spotify API"],
       about:
-        "A website that lists new releases on Spotify along with their genres. A brilliant way to discover new music",
+        "A website that lists new releases on Spotify along with their genres. A brilliant way to discover new music.",
       link: "https://discovered.is",
       color: "#1db954",
     },
@@ -331,14 +425,14 @@ export default function Home() {
         </HeadshotContainer>
       </HeroContainer>
       <ProjectsContainer>
-        <ProjectTitleContainer ref={ref}>
+        <SectionTitleContainer ref={ptRef}>
           <HollowTitle
             ref={projectTitleRef}
-            className={isVisible ? "visible" : "hidden"}
+            className={ptInView ? "visible" : "hidden"}
           >
             Pro&shy;jec&shy;ts
           </HollowTitle>
-        </ProjectTitleContainer>
+        </SectionTitleContainer>
         {projects.map((project, index) => {
           return (
             <Project
@@ -356,6 +450,56 @@ export default function Home() {
           )
         })}
       </ProjectsContainer>
+      <AboutContainer>
+        <SectionTitleContainer ref={abRef}>
+          <HollowTitle
+            ref={aboutTitleRef}
+            className={abInView ? "visible" : "hidden"}
+          >
+            Abo&shy;ut
+          </HollowTitle>
+        </SectionTitleContainer>
+        <AboutMe>
+          I am a {new Date().getFullYear() - 1990} year old frontend developer
+          with and eye and passion for design. I have experience with creating
+          websites and apps, primerally using React. I am happily employed at
+          the moment but love discussing projects. Feel free to reach out and
+          lets talk.
+        </AboutMe>
+        <AboutSkills as="div">
+          <h3>Skills</h3>
+          <AboutSkillsList>
+            <AboutSkillsListItem>React</AboutSkillsListItem>
+            <AboutSkillsListItem>JavaScript</AboutSkillsListItem>
+            <AboutSkillsListItem>Styled components</AboutSkillsListItem>
+            <AboutSkillsListItem>Animations</AboutSkillsListItem>
+            <AboutSkillsListItem>Figma</AboutSkillsListItem>
+            <AboutSkillsListItem>User interviews</AboutSkillsListItem>
+            <AboutSkillsListItem>Soft skills</AboutSkillsListItem>
+          </AboutSkillsList>
+        </AboutSkills>
+      </AboutContainer>
+      <ContactMeContainer>
+        <h3>Let's talk!</h3>
+        <ContactMeText>
+          I might not be immediately available for hire but I'd love to hear
+          from you if I'm the type of person you're looking for.
+        </ContactMeText>
+        <GetInTouchIconWrapper>
+          <GetInTouchIcon
+            href="mailto:ivaroddsson@gmail.com?subject=👋 Ívar"
+            aria-label="get in touch"
+          >
+            <Icon />
+          </GetInTouchIcon>
+          <GetInTouchEmoji
+            aria-label="an open mailbox with a letter inside"
+            role="img"
+          >
+            📬
+          </GetInTouchEmoji>
+        </GetInTouchIconWrapper>
+      </ContactMeContainer>
     </Layout>
   )
 }
