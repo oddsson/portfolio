@@ -7,8 +7,7 @@ import Project from "../components/project"
 import Icon from "../assets/get_in_touch.svg"
 
 const Container = styled.section`
-  width: 90%;
-  margin: 0 auto;
+  margin: 0 16px;
 
   @media (min-width: 1440px) {
     width: 70vw;
