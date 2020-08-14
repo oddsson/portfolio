@@ -176,7 +176,6 @@ const HeadshotText = styled(CaveatText)`
 `
 
 const Headshot = styled.img`
-  max-height: 100%;
   width: 100%;
   max-width: 500px;
   mix-blend-mode: lighten;
