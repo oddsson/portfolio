@@ -46,14 +46,15 @@ const Curtain = styled.div`
 const HeroContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  margin: 4em auto;
+  height: 100vh;
+  margin-top: 4em;
 
   @media (min-width: 1440px) {
     position: relative;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 20em auto;
+    margin-top: 0;
   }
 `
 
@@ -352,12 +353,12 @@ export default function Home() {
 
   const [ptRef, ptInView] = useInView({
     /* Optional options */
-    threshold: 1,
+    threshold: 0.7,
   })
 
   const [abRef, abInView] = useInView({
     /* Optional options */
-    threshold: 1,
+    threshold: 0.7,
   })
 
   useEffect(() => {
