@@ -192,9 +192,10 @@ const Headshot = styled.img`
 `
 const ProjectsContainer = styled(Container)`
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-template-rows: ${props => `310px repeat(${props.columns}, 1fr)`};
 
   @media (min-width: 1440px) {
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
   }
 `
@@ -271,6 +272,7 @@ const HollowTitle = styled.h2`
 
 const AboutContainer = styled(ProjectsContainer)`
   margin-top: 2em;
+  grid-auto-rows: 1fr;
 
   @media (min-width: 1440px) {
     margin: 12em auto;
@@ -442,7 +444,7 @@ export default function Home() {
           </ThatsMeContainer>
         </HeadshotContainer>
       </HeroContainer>
-      <ProjectsContainer>
+      <ProjectsContainer columns={4}>
         <SectionTitleContainer ref={ptRef}>
           <HollowTitle
             ref={projectTitleRef}
@@ -468,7 +470,7 @@ export default function Home() {
           )
         })}
       </ProjectsContainer>
-      <AboutContainer>
+      <AboutContainer columns={2}>
         <SectionTitleContainer ref={abRef}>
           <HollowTitle
             ref={aboutTitleRef}
