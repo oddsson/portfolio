@@ -7,11 +7,12 @@ import Project from "../components/project"
 import Icon from "../assets/get_in_touch.svg"
 
 const Container = styled.section`
-  margin: 0 16px;
+  margin: 0 1em;
 
   @media (min-width: 1440px) {
     width: 70vw;
     max-width: 1500px;
+    margin: 0 auto;
   }
 `
 
@@ -125,14 +126,18 @@ const HeadshotContainer = styled.div`
 
   ::after {
     content: "";
+    display: none;
     background: #706fd3;
     position: absolute;
     width: 112px;
     height: 112px;
     bottom: -47px;
     right: -14px;
-    display: inline-block;
     opacity: 0.7;
+
+    @media (min-width: 650px) {
+      display: inline-block;
+    }
   }
 
   @media (min-width: 1440px) {
@@ -262,7 +267,6 @@ const HollowTitle = styled.h2`
     }
   }
 `
-//test
 
 const AboutContainer = styled(ProjectsContainer)`
   margin-top: 2em;
@@ -301,7 +305,8 @@ const ContactMeContainer = styled(Container)`
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  margin: 2em auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
   min-height: 50vh;
   padding: 2em 0;
 
