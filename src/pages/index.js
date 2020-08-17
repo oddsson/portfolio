@@ -162,11 +162,12 @@ const ThatsMeContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: -70px;
-  background-color: #ff793f;
+  bottom: -60px;
+  background-color: transparent;
 
   @media (min-width: 1440px) {
     left: -110px;
+    bottom: -70px;
   }
 `
 
