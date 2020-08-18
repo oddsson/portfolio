@@ -7,11 +7,12 @@ import Project from "../components/project"
 import Icon from "../assets/get_in_touch.svg"
 
 const Container = styled.section`
-  margin: 0 16px;
+  margin: 0 1em;
 
   @media (min-width: 1440px) {
     width: 70vw;
     max-width: 1500px;
+    margin: 0 auto;
   }
 `
 
@@ -125,14 +126,18 @@ const HeadshotContainer = styled.div`
 
   ::after {
     content: "";
+    display: none;
     background: #706fd3;
     position: absolute;
     width: 112px;
     height: 112px;
     bottom: -47px;
     right: -14px;
-    display: inline-block;
     opacity: 0.7;
+
+    @media (min-width: 650px) {
+      display: inline-block;
+    }
   }
 
   @media (min-width: 1440px) {
@@ -157,11 +162,12 @@ const ThatsMeContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: -70px;
-  background-color: #ff793f;
+  bottom: 0px;
+  background-color: transparent;
 
   @media (min-width: 1440px) {
     left: -110px;
+    bottom: -70px;
   }
 `
 
@@ -186,9 +192,10 @@ const Headshot = styled.img`
 `
 const ProjectsContainer = styled(Container)`
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-template-rows: ${props => `310px repeat(${props.columns}, 1fr)`};
 
   @media (min-width: 1440px) {
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
   }
 `
@@ -262,10 +269,10 @@ const HollowTitle = styled.h2`
     }
   }
 `
-//test
 
 const AboutContainer = styled(ProjectsContainer)`
   margin-top: 2em;
+  grid-auto-rows: 1fr;
 
   @media (min-width: 1440px) {
     margin: 12em auto;
@@ -301,7 +308,8 @@ const ContactMeContainer = styled(Container)`
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  margin: 2em auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
   min-height: 50vh;
   padding: 2em 0;
 
@@ -436,7 +444,7 @@ export default function Home() {
           </ThatsMeContainer>
         </HeadshotContainer>
       </HeroContainer>
-      <ProjectsContainer>
+      <ProjectsContainer columns={4}>
         <SectionTitleContainer ref={ptRef}>
           <HollowTitle
             ref={projectTitleRef}
@@ -462,7 +470,7 @@ export default function Home() {
           )
         })}
       </ProjectsContainer>
-      <AboutContainer>
+      <AboutContainer columns={2}>
         <SectionTitleContainer ref={abRef}>
           <HollowTitle
             ref={aboutTitleRef}
